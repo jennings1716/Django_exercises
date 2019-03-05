@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head><title> Home </title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">   
+    </head>
+    <body>
+        <form method="POST">
+        {% csrf_token %}
+            <div class="container">
+                <table   class="table">
+                    <thead  class="thead-inverse">
+                        <tr>
+                            <td>Name</td>
+                            <td>Description </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for board in boards%}
+                            <tr>
+                                <td>{{board.name}}</td>
+                                <td>{{board.description}} </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <input type="submit" class="btn btn-primary" value  ="New Post"/>
+            </div>
+            
+        </form>
+    </body>
+</html>
